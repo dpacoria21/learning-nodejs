@@ -38,6 +38,15 @@ class Tareas {
         })
     }
 
+    listarPendientesCompletadas(completadas = true) {
+        console.log();
+        this.getListado.forEach((tarea, i) => {
+            if( Boolean(tarea.completadoEn) === completadas ) {
+                console.log(`${((i+1)+"").green}. ${tarea.desc} :: ${tarea.completadoEn ? `${tarea.completadoEn}`.green : 'Pendiente'.red}`);
+            }
+        })
+    }
+
 }
 
 module.exports = Tareas;
