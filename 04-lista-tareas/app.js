@@ -4,16 +4,23 @@ const inquirer = require('inquirer');
 const {inquirerMenu, pausa, leerInput} = require('./helpers/inquirer');
 const Tarea = require('./models/tarea');
 const Tareas = require('./models/tareas');
-const { mostrarMenu } = require('./helpers/mensajes.js')
+const { guardarDB, leerDB } = require('./helpers/guardarArchivo');
+// const { mostrarMenu } = require('./helpers/mensajes.js')
 
 const main = async () => {
-    console.log('Hola Mundo');
 
     let opt = '';
     const tareas = new Tareas();
+    const tareasDB = leerDB();
+
+    if(tareasDB) {
+        tareas.cargarTareasFromArray(tareasDB);
+    }
+
+    await pausa();
 
     do{
-        opt = await mostrarMenu();
+        opt = await inquirerMenu();
         console.log({opt});
 
         switch(opt) {
@@ -24,12 +31,13 @@ const main = async () => {
                 break;
 
             case '2':
-                console.log(tareas._listado);
+                console.log(tareas.getListado);
                 break;
             
         }
-        // if(opt !== '0') await pausa();
-        // opt = await inquirerMenu();
+
+
+        guardarDB(tareas.getListado);
 
         await pausa();
 

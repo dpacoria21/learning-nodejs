@@ -6,7 +6,22 @@ class Tareas {
 
     constructor() {
         this._listado = {};
+    }
 
+    cargarTareasFromArray(tareas = []) {
+        tareas.forEach((tarea) => {
+            this._listado[tarea.id] = tarea;
+        });
+    }
+
+    get getListado() {
+        const listado = [];
+
+        Object.keys(this._listado).forEach((key) => {
+            listado.push(this._listado[key]);
+        })
+
+        return listado;
     }
 
     crearTarea(desc) {
