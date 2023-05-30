@@ -31,7 +31,7 @@ const main = async () => {
                 break;
 
             case '2':
-                console.log(tareas.getListado);
+                tareas.listadoCompleto();
                 break;
             
         }

@@ -31,6 +31,13 @@ class Tareas {
 
     }
 
+    listadoCompleto() {
+        console.log();
+        this.getListado.forEach((tarea, i) => {
+            console.log(`${((i+1)+"").green}. ${tarea.desc} :: ${tarea.completadoEn ? 'Completado'.green : 'Pendiente'.red}`);
+        })
+    }
+
 }
 
 module.exports = Tareas;
