@@ -23,7 +23,6 @@ class Busquedas {
             'lang': 'es',
             'appid': process.env.OPENWEATHER_KEY,
         }
-        // ?lat=40.739979&lon=-84.105006&appid=eb70e2ac101aed89d34685a1f2087c4b&units=metric&lang=es
     }
 
     async buscarCiudad(lugar = '') {
