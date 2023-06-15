@@ -66,10 +66,12 @@ class Busquedas {
 
             const {data} = await instance.get();
 
-            const {temp, temp_min, temp_max} = data.main;
-            
-            const [weather] = data.weather;
-            const {description: desc} = weather;
+            // const {temp, temp_min, temp_max} = data.main;
+            const { main: {temp, temp_max, temp_min} } = data;
+
+            // const [weather] = data.weather;
+            // const {description: desc} = weather;
+            const {weather: [ {description: desc} ]} = data;
 
             return {
                 temp,
