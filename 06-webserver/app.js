@@ -1,8 +1,12 @@
 const express = require('express');
+const hbs = require('hbs');
+
 const app = express();
 const port = 8080;
 
+// Handlebars
 app.set('view engine', 'hbs');
+hbs.registerPartials(__dirname + '/views/partials');
 
 // servir contenido estatico 
 app.use( express.static('public') );
@@ -12,18 +16,20 @@ app.use( express.static('public') );
 //     res.send('Home Page')
 // });
 
+const params = {
+    nombre: 'Diego Ivan',
+    titulo: 'Practicando con hbs', 
+}
+
 app.get('/', (req, res) => {
-    res.render('home', {
-        nombre: 'Diego Ivan',
-        titulo: 'Practicando con hbs',
-    });
+    res.render('home', params);
 });
 app.get('/generic', (req, res) => {
-    res.sendFile(__dirname+'/public/generic.html');
+    res.render('generic', params);
 });
 
 app.get('/elements', (req, res) => {
-    res.sendFile(__dirname+'/public/elements.html');
+    res.render('elements',params)
 })
 
 app.get('*', function(req, res) {
