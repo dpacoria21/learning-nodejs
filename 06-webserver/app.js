@@ -13,7 +13,10 @@ app.use( express.static('public') );
 // });
 
 app.get('/', (req, res) => {
-    res.render('home');
+    res.render('home', {
+        nombre: 'Diego Ivan',
+        titulo: 'Practicando con hbs',
+    });
 });
 app.get('/generic', (req, res) => {
     res.sendFile(__dirname+'/public/generic.html');
